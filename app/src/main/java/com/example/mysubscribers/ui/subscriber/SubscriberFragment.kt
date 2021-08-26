@@ -13,7 +13,7 @@ import com.example.mysubscribers.R
 import com.example.mysubscribers.data.db.AppDatabase
 import com.example.mysubscribers.data.db.dao.SubscriberDAO
 import com.example.mysubscribers.extension.hideKeyboard
-import com.example.mysubscribers.repository.DatabaseDataSource
+import com.example.mysubscribers.repository.SubscriberDataRepository
 import com.example.mysubscribers.repository.SubscriberRepository
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.subscriber_fragment.*
@@ -25,7 +25,7 @@ class SubscriberFragment : Fragment(R.layout.subscriber_fragment) {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 val subscriberDAO: SubscriberDAO = AppDatabase.getInstance(requireContext()).subscriberDAO
-                val repository: SubscriberRepository = DatabaseDataSource(subscriberDAO)
+                val repository: SubscriberRepository = SubscriberDataRepository(subscriberDAO)
                 return SubscriberViewModel(repository) as T
             }
         }

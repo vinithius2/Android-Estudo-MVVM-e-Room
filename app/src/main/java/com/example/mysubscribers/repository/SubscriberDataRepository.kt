@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.mysubscribers.data.db.dao.SubscriberDAO
 import com.example.mysubscribers.data.db.entity.SubscriberEntity
 
-class DatabaseDataSource(
+class SubscriberDataRepository(
     private val subscriberDAO: SubscriberDAO
 ) : SubscriberRepository {
 
