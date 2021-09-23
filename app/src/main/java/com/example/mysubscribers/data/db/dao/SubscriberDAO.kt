@@ -1,11 +1,13 @@
 package com.example.mysubscribers.data.db.dao
 
-import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 import com.example.mysubscribers.data.db.entity.SubscriberEntity
 
 @Dao
-interface SubscriberDAO {
+interface SubscriberDao {
 
     @Insert
     suspend fun insert(subsicriber: SubscriberEntity): Long

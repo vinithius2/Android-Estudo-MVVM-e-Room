@@ -6,12 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mysubscribers.R
-import com.example.mysubscribers.repository.SubscriberRepository
+import com.example.mysubscribers.repository.SubscriberDataRepository
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class SubscriberViewModel(
-    private val reporitory: SubscriberRepository
+    private val reporitory: SubscriberDataRepository
 ) : ViewModel() {
 
     private val _subscriberStateEventData = MutableLiveData<SubscriberState>()

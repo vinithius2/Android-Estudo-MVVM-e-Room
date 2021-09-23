@@ -4,13 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.mysubscribers.data.db.dao.SubscriberDAO
+import com.example.mysubscribers.data.db.dao.SubscriberDao
 import com.example.mysubscribers.data.db.entity.SubscriberEntity
 
 @Database(entities = [SubscriberEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract val subscriberDAO: SubscriberDAO
+    abstract fun subscriberDao(): SubscriberDao
 
     companion object {
         @Volatile

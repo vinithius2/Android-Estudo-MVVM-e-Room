@@ -3,30 +3,15 @@ package com.example.mysubscribers.ui.subscriberslist
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.mysubscribers.R
-import com.example.mysubscribers.data.db.AppDatabase
-import com.example.mysubscribers.data.db.dao.SubscriberDAO
 import com.example.mysubscribers.extension.navigateWithAnimations
-import com.example.mysubscribers.repository.SubscriberDataRepository
-import com.example.mysubscribers.repository.SubscriberRepository
 import kotlinx.android.synthetic.main.subscriber_list_fragment.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class SubscriberListFragment : Fragment(R.layout.subscriber_list_fragment) {
 
-    // Injeção de pedendência resolve isso
-    private val viewModel: SubscriberListViewModel by viewModels {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                val subscriberDAO: SubscriberDAO = AppDatabase.getInstance(requireContext()).subscriberDAO
-                val repository: SubscriberRepository = SubscriberDataRepository(subscriberDAO)
-                return SubscriberListViewModel(repository) as T
-            }
-        }
-    }
+    private val viewModel: SubscriberListViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

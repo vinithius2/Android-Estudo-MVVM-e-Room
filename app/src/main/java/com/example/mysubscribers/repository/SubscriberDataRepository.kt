@@ -1,11 +1,10 @@
 package com.example.mysubscribers.repository
 
-import androidx.lifecycle.LiveData
-import com.example.mysubscribers.data.db.dao.SubscriberDAO
+import com.example.mysubscribers.data.db.dao.SubscriberDao
 import com.example.mysubscribers.data.db.entity.SubscriberEntity
 
 class SubscriberDataRepository(
-    private val subscriberDAO: SubscriberDAO
+    private val subscriberDao: SubscriberDao
 ) : SubscriberRepository {
 
     override suspend fun insertSubscriber(name: String, email: String): Long {
@@ -13,7 +12,7 @@ class SubscriberDataRepository(
             name = name,
             email = email
         )
-        return subscriberDAO.insert(subscriber)
+        return subscriberDao.insert(subscriber)
     }
 
     override suspend fun updateSubscriber(id: Long, name: String, email: String) {
@@ -22,19 +21,19 @@ class SubscriberDataRepository(
             name = name,
             email = email
         )
-        subscriberDAO.update(subscriber)
+        subscriberDao.update(subscriber)
     }
 
     override suspend fun deleteSubscriber(id: Long) {
-        subscriberDAO.delete(id)
+        subscriberDao.delete(id)
     }
 
     override suspend fun deleteAllSubscriber() {
-        subscriberDAO.deleteAll()
+        subscriberDao.deleteAll()
     }
 
     override suspend fun getAllSubscriber(): List<SubscriberEntity> {
-        return subscriberDAO.getAll()
+        return subscriberDao.getAll()
     }
 
 }
